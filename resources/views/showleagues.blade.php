@@ -14,6 +14,7 @@
                             <th scope="col">#</th>
                             <th scope="col">League name</th>
                             <th scope="col">Descripition</th>
+                            <th scope="col">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -22,6 +23,7 @@
                                 <th scope="row">{{$league->id}}</th>
                                 <td> {{$league->name}}</td>
                                 <td>{{$league->description}}</td>
+                                <td><a href="{{ route('deleteleague', ['id' => $league->id]) }}" value="{{ $league->id }}" class="btn btn-danger">X</a></td>
                             </tr>
                         @endforeach
                         </tbody>

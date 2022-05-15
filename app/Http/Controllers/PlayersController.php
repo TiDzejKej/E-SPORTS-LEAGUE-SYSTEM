@@ -18,6 +18,14 @@ class PlayersController extends Controller
         return view('addplayer');
     }
 
+    public function deletePlayer($id)
+    {
+        Player::destroy($id);
+
+        return redirect('/home/showplayers');
+    }
+
+
     public function submitPlayer(Request $request)
     {
         $check = $request->validate([

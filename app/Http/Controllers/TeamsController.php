@@ -18,6 +18,12 @@ class TeamsController extends Controller
     {
         return view('addteam');
     }
+    public function deleteTeam($id)
+    {
+        Team::destroy($id);
+
+        return redirect('/home/showteams');
+    }
 
     public function submitTeam(Request $request)
     {

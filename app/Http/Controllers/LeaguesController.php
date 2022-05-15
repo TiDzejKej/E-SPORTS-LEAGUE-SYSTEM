@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\League;
 use Illuminate\Support\Facades\DB;
 
+
 class LeaguesController extends Controller
 {
     public function showLeagues()
     {
-        $leagues = DB::table('leagues')->get();
+        $leagues = League::all();
         return view('showleagues', ['leagues'=>$leagues]);
     }
 
@@ -19,16 +20,35 @@ class LeaguesController extends Controller
         return view('addleague');
     }
 
+    public function deleteLeague($id)
+    {
+        League::destroy($id);
+
+        return redirect('/home/showleagues');
+    }
+
     public function submitLeague(Request $request)
     {
-        $league = new League();
+        $check = $request->validate([
+           'name'=> 'required',
+           'description' => 'description'
+        ]);
+        if(is_null($check))
+            return redirect('/home');
 
-        $league->name = $request->name;
-        $league->description = $request->description;
+        else
+        {
+            $league = new League();
 
-        $league->save();
+            $league->name = $request->name;
+            $league->description = $request->description;
 
-        return redirect('/home');
+            $league->save();
+
+            return redirect('/home');
+        }
+
+
     }
 
 

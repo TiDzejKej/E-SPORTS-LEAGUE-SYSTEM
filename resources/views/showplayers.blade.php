@@ -16,6 +16,7 @@
                             <th scope="col">Surname</th>
                             <th scope="col">Nickname</th>
                             <th scope="col">Team</th>
+                            <th scope="col">Actions</th>
 
                         </tr>
                         </thead>
@@ -27,6 +28,8 @@
                                 <td>{{$player->surname}}</td>
                                 <td>{{$player->nickname}}</td>
                                 <td>{{$player->team->name}}</td>
+                                <td><a href="{{ route('deleteplayer', ['id' => $player->id]) }}" value="{{ $player->id }}" class="btn btn-danger">X</a></td>
+
                             </tr>
                         @endforeach
                         </tbody>
