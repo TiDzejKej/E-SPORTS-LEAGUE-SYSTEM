@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use App\Models\Player;
 
 class TeamsController extends Controller
 {
@@ -13,6 +14,13 @@ class TeamsController extends Controller
 
         return view('showteams', ['teams'=>$teams]);
     }
+    public function showPlayersteam($id)
+    {
+        $players = Player::all()->where('team_id', $id);
+
+        return view('showplayersteam', ['players'=>$players]);
+    }
+
 
     public function addTeam()
     {
@@ -32,20 +40,18 @@ class TeamsController extends Controller
             'description' => 'required',
             'league_id' => 'required',
         ]);
-        if(is_null($check))
-            return redirect('/home');
-        else
+
+        if($check != null)
         {
-            $team = new Team();
-
-            $team->name = $request->name;
-            $team->description = $request->description;
-            $team->league_id = $request->league_id;
-
-            $team->save();
-
-            return redirect('/home');
+            Team::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'league_id' => $request->league_id,
+            ]);
+            return redirect('/home')->with(['message' => 'Elegancko dodane']);
         }
+
+        return redirect('/home')->with(['message' => 'Lipton, cos sie zwalilo']);
 
     }
 }

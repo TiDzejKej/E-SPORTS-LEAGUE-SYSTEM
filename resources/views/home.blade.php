@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('ADMIN PANEL') }}</div>
 
                 <div class="card-body">
+                    @csrf
                     <a href="{{ route('addleague') }}" class="btn btn-dark">Add League</a>
                     <a href="{{route('addteam')}}" class="btn btn-dark">Add Team</a>
                     <a href="{{ route('addplayer') }}" class="btn btn-dark">Add Player</a> <br></br>

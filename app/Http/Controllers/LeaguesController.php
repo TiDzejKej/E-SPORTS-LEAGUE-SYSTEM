@@ -31,7 +31,7 @@ class LeaguesController extends Controller
     {
         $check = $request->validate([
            'name'=> 'required',
-           'description' => 'description'
+           'description' => 'required'
         ]);
         if(is_null($check))
             return redirect('/home');

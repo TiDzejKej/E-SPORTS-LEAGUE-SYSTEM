@@ -28,7 +28,7 @@
 
                         <label for="select" class="form-label">Team</label>
                         <select name="team_id" class="form-select">
-                            <option selected>Choose team</option>
+                            <option value="">Choose team</option>
                             @foreach(App\Models\Team::all() as $team)
                                 <option value="{{$team->id}}">{{$team->name}}</option>
                             @endforeach

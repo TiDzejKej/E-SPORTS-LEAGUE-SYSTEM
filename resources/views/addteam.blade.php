@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('ADD TEAM') }}</div>
 
                 <div class="card-body">
+
                     <form action="{{ route('submitteam') }}" method="get">
 
                         <div class="mb-3">
@@ -22,7 +23,7 @@
 
                         <label for="select" class="form-label">League</label>
                         <select name="league_id" class="form-select">
-                            <option selected>Choose league</option>
+                            <option value="">Choose league</option>
                             @foreach(App\Models\League::all() as $liga)
                                 <option value="{{$liga->id}}">{{$liga->name}}</option>
                             @endforeach

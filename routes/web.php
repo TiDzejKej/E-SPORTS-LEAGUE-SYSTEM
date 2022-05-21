@@ -35,6 +35,7 @@ Route::get('/home/addteam', [TeamsController::class, 'addTeam'])->name('addteam'
 Route::get('/home/submitteam', [TeamsController::class, 'submitTeam'])->name('submitteam');
 Route::get('/home/showteams', [TeamsController::class, 'showTeams'])->name('showteams');
 Route::get('/home/deleteteam/{id}', [TeamsController::class, 'deleteTeam'])->name('deleteteam');
+Route::get('/home/showplayersteam/{id}', [TeamsController::class, 'showPlayersteam'])->name('showplayersteam');
 
 /* Players */
 Route::get('/home/addplayer', [PlayersController::class, 'addPlayer'])->name('addplayer');

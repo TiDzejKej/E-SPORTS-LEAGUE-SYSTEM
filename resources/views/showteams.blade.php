@@ -16,6 +16,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">League</th>
                             <th scope="col">Actions</th>
+                            <th scope="col"></th>
 
                         </tr>
                         </thead>
@@ -27,7 +28,7 @@
                                 <td>{{$team->description}}</td>
                                 <td>{{$team->league->name}}</td>
                                 <td><a href="{{ route('deleteteam', ['id' => $team->id]) }}" value="{{ $team->id }}" class="btn btn-danger">X</a></td>
-
+                                <td><a href="{{ route('showplayersteam',['id' => $team->id]) }}" value="{{ $team->id }}" class="btn btn-warning">S</a></td>
 
                             </tr>
                         @endforeach
