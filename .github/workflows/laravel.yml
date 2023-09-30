@@ -1,5 +1,5 @@
 on: push
-name: Deploy na serwer...
+name: Deploy na serwer... (PHP)
 jobs:
   web-deploy:
     name: Rozpocznij deploy
