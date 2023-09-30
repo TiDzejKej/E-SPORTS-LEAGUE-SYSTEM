@@ -1,0 +1,28 @@
+on: push
+name: Deploy na serwer... (NODE)
+jobs:
+  web-deploy:
+    name: Rozpocznij deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pobieranie kodu...
+        uses: actions/checkout@v3
+
+      - name: Instalacja node...
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      
+      - name: Build projektu...
+        run: |
+          npm install
+          npm run build
+
+      - name: FTP push na serwer...
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.dlptest.com
+          username: dlpuser
+          password: rNrKYTX9g7z3RgJRmxWuGHbeu
+          protocol: ftp
+          dry-run: true
