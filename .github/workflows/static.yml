@@ -18,7 +18,7 @@ jobs:
           npm install
           npm run build
 
-      - name: FTP push na serwer...
+      - name: SFTP push na serwer...
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.ftp_host }}
