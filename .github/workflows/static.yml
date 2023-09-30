@@ -21,8 +21,7 @@ jobs:
       - name: FTP push na serwer...
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.dlptest.com
-          username: dlpuser
-          password: rNrKYTX9g7z3RgJRmxWuGHbeu
-          protocol: ftp
-          dry-run: true
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          protocol: ftps
