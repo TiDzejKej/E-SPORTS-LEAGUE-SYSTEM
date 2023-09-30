@@ -17,9 +17,8 @@ jobs:
       - name: FTP push na serwer...
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.ftp_host }}
-          username: ${{ secrets.ftp_user }}
-          password: ${{ secrets.ftp_password }}
-          port: ${{ secrets.ftp_port }}
+          server: ftp://test.rebex.net/
+          username: demo
+          password: password
           protocol: ftp
           dry-run: true
