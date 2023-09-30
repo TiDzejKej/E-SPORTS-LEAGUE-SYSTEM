@@ -11,14 +11,28 @@ jobs:
       - name: Tworzenie kopii .env...
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
+      - name: Ustawianie wersji PHP...
+        uses: shivammathur/setup-php@v2
+        with: 
+           php-version: '8.1'
+            
       - name: Instalacja paczek...
         run: composer install -q --no-ansi --no-interaction --prefer-dist
 
-      - name: FTP push na serwer...
+      - name: Aktualizacja paczek...
+        run: composer update -q --no-ansi --no-interaction --prefer-dist
+        
+      - name: Wykonywanie komend artisan...
+        run: |
+            php artisan key:generate
+            php artisan migrate
+            php artisan optimize
+
+      - name: SFTP push na serwer...
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ftp.dlptest.com
           username: dlpuser
           password: rNrKYTX9g7z3RgJRmxWuGHbeu
-          protocol: ftp
+          protocol: ftps
           dry-run: true
